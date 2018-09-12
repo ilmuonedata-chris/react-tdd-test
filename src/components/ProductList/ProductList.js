@@ -3,12 +3,12 @@ import propTypes from 'prop-types';
 
 class ProductList extends Component {
   render() {
-    const { products } = this.props;
+    const { products, onProductSelect } = this.props;
     return (
       <div>
         {products.map(product => (
-          <li key={product.id}>
-            {product.name}
+          <li key={product.id} onClick={() => onProductSelect(product)}>
+            {product.name} {product.brand}
           </li>
         ))}
       </div>
@@ -17,7 +17,8 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-  products: propTypes.array.isRequired
+  products: propTypes.array.isRequired,
+  onProductSelect: propTypes.func.isRequired
 };
 
 export default ProductList;
